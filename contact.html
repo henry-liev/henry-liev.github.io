@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Henry Liev</title>
+    <link rel="stylesheet" href="styling.css">
+</head>
+<body>
+    <div class="header-nav">
+        <div class="name"><em><b>Henry Liev</b></em></div>
+        <div>
+            <a href="index.html">Home</a> &nbsp;
+            <!-- <a href="pubs.html">Publications</a> &nbsp; -->
+            <a href="notes.html">Notes</a> &nbsp;
+            <a href="contact.html">Contact</a> &nbsp;
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    
+    <h1>Contact</h1>
+    
+    <div style="max-width: 650px; margin: 0 auto; padding: 0;">
+        <form action="mailto:lievhenry@berkeley.edu" method="POST" enctype="text/plain" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: none; margin-bottom: 0;">
+            <label for="user-email" style="font-size: 14px;">Your Email:</label>
+            <input type="email" id="user-email" name="user-email" required 
+                   placeholder="your@email.com"
+                   style="padding: 0; font-size: 15px; border: 1px solid #bbb; border-radius: 4px; width: 100%; box-sizing: border-box;">
+            <label for="user-message" style="font-size: 14px;">Message:</label>
+            <textarea id="user-message" name="user-message" rows="3" required
+                      placeholder="Type your message here..."
+                      style="padding: 0; font-size: 15px; border: 1px solid #bbb; border-radius: 4px; width: 100%; box-sizing: border-box;"></textarea>
+            <button type="submit" style="margin-top: 8px; padding: 0; border: 1.5px solid #888; background: none; color: #111; border-radius: 0; font-size: 17px; cursor: pointer; height: 40px; align-self: flex-start; display: flex; align-items: center; justify-content: center; min-width: 64px;">
+                Send
+            </button>
+        </form>
+        <p style="font-size: 12px; margin-top: 8px; color: #777; margin-bottom: 0;"></p>
+    </div>
+</body>
+</html>
+
