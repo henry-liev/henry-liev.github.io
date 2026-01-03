@@ -21,67 +21,9 @@
     <h1>Contact</h1>
     
     <div style="max-width: 650px; margin: 0 auto; padding: 0;">
-        <form id="contact-form" method="POST" style="display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: none; margin-bottom: 0;">
-            <label for="user-name" style="font-size: 14px;">Your Name:</label>
-            <input type="text" id="user-name" name="name" required 
-                   placeholder="Your name"
-                   style="padding: 8px; font-size: 15px; border: 1px solid #bbb; border-radius: 4px; width: 100%; box-sizing: border-box;">
-            <label for="user-email" style="font-size: 14px;">Your Email:</label>
-            <input type="email" id="user-email" name="email" required 
-                   placeholder="your@email.com"
-                   style="padding: 8px; font-size: 15px; border: 1px solid #bbb; border-radius: 4px; width: 100%; box-sizing: border-box;">
-            <label for="user-message" style="font-size: 14px;">Message:</label>
-            <textarea id="user-message" name="message" rows="3" required
-                      placeholder="Type your message here..."
-                      style="padding: 8px; font-size: 15px; border: 1px solid #bbb; border-radius: 4px; width: 100%; box-sizing: border-box;"></textarea>
-            <button type="submit" style="margin-top: 8px; padding: 0; border: 1.5px solid #888; background: none; color: #111; border-radius: 0; font-size: 17px; cursor: pointer; height: 40px; align-self: flex-start; display: flex; align-items: center; justify-content: center; min-width: 64px;">
-                Send
-            </button>
-        </form>
-        <div id="form-status" style="font-size: 14px; margin-top: 8px; color: #777; display: none;"></div>
-        <p style="font-size: 12px; margin-top: 8px; color: #777; margin-bottom: 0;">
-        </p>
+        <!-- Replace this URL with your Tally form embed URL -->
+        <iframe src="https://tally.so/embed/ZjEd8V?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form"></iframe>
     </div>
-    <script>
-        const form = document.getElementById('contact-form');
-        const status = document.getElementById('form-status');
-        
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(form);
-            
-            status.style.display = 'block';
-            status.textContent = 'Sending...';
-            status.style.color = '#777';
-            
-            // Use Cloudflare Pages Function endpoint
-            fetch('/api/contact', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    return response.json().then(data => {
-                        throw new Error(data.error || 'Something went wrong');
-                    });
-                }
-            })
-            .then(data => {
-                status.textContent = 'Message sent successfully!';
-                status.style.color = '#4a4';
-                form.reset();
-            })
-            .catch(error => {
-                status.textContent = 'Error: ' + error.message;
-                status.style.color = '#c44';
-            });
-        });
-    </script>
     
     <footer style="text-align: center; margin-top: 60px; padding: 20px 0; border-top: 1px solid #ddd; position: relative; bottom: 0; width: 100%;">
         <a href="https://github.com/henry-liev" target="_blank" style="text-decoration: none; border-bottom: none; color: #333; margin-right: 15px;">
