@@ -26,4 +26,5 @@
 - [Lemon Meringue Eclairs](https://bakefromscratch.com/lemon-meringue-eclairs/)
 - [Chocolate Ganache French Macarons](https://kitchen335co.com/chocolate-ganache-french-macarons/)
 - [Taiwanese Pineapple Cakes Feng Li Su](https://www.siftandsimmer.com/taiwanese-pineapple-cakes-feng-li-su/)
+- [Basque Cheesecake](https://www.recipetineats.com/basque-cheesecake/)
 - Croissants (Recipe TBD)
