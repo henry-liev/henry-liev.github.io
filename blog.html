@@ -6,6 +6,17 @@
     <title>Thoughts - Henry Liev</title>
     <link rel="stylesheet" href="styling.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         .blog-container {
             max-width: 800px;
@@ -216,6 +227,40 @@
             postContainer.style.display = 'none';
         }
 
+        // Function to wait for MathJax to be ready
+        async function waitForMathJax() {
+            // Check if MathJax is already loaded and ready
+            if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+                await window.MathJax.startup.promise;
+                return;
+            }
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                return;
+            }
+            
+            // Wait for MathJax script to load
+            return new Promise((resolve) => {
+                let attempts = 0;
+                const maxAttempts = 100; // 5 seconds max
+                const checkMathJax = setInterval(() => {
+                    attempts++;
+                    if (window.MathJax) {
+                        if (window.MathJax.startup && window.MathJax.startup.promise) {
+                            clearInterval(checkMathJax);
+                            window.MathJax.startup.promise.then(resolve).catch(resolve);
+                        } else if (window.MathJax.typesetPromise) {
+                            clearInterval(checkMathJax);
+                            resolve();
+                        }
+                    }
+                    if (attempts >= maxAttempts) {
+                        clearInterval(checkMathJax);
+                        resolve();
+                    }
+                }, 50);
+            });
+        }
+
         // Function to display a single post
         async function displayPost(filename) {
             const listView = document.getElementById('blog-list-container');
@@ -228,6 +273,25 @@
             postContent.innerHTML = '<p>Loading...</p>';
             const html = await loadMarkdown(filename);
             postContent.innerHTML = html;
+            
+            // Wait for DOM to update, then process MathJax
+            await new Promise(resolve => setTimeout(resolve, 0));
+            
+            // Wait for MathJax to be ready, then process
+            await waitForMathJax();
+            if (window.MathJax) {
+                try {
+                    // Use typesetPromise for MathJax 3.x
+                    if (window.MathJax.typesetPromise) {
+                        await window.MathJax.typesetPromise([postContent]);
+                    } else if (window.MathJax.typeset) {
+                        // Fallback for older API
+                        window.MathJax.typeset([postContent]);
+                    }
+                } catch (error) {
+                    console.error('MathJax rendering error:', error);
+                }
+            }
         }
 
         // Initialize
