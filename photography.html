@@ -175,7 +175,7 @@
                     <a href="?post=${encodeURIComponent(post.filename)}" class="photo-post-link">
                         ${post.title}
                     </a>
-                    <div class="photo-post-date">${post.date}</div>
+                    ${post.date ? `<div class="photo-post-date">${post.date}</div>` : ''}
                 </li>
             `).join('');
 

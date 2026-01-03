@@ -11,14 +11,36 @@
             max-width: 800px;
             margin: 0 auto;
         }
+        .blog-category {
+            margin-bottom: 25px;
+        }
+        .blog-category summary {
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 0;
+            user-select: none;
+            text-transform: capitalize;
+        }
+        .blog-category summary:hover {
+            color: #555;
+        }
+        .blog-category details {
+            border-bottom: 2px solid #bbb;
+            padding-bottom: 15px;
+        }
+        .blog-category details[open] {
+            border-bottom: 2px solid #333;
+        }
         .blog-list {
             list-style: none;
             padding: 0;
+            margin-top: 15px;
         }
         .blog-list-item {
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #bbb;
+            border-bottom: 1px solid #ddd;
         }
         .blog-list-item:last-child {
             border-bottom: none;
@@ -32,6 +54,11 @@
             font-size: 14px;
             color: #666;
             font-style: italic;
+        }
+        .empty-category {
+            color: #999;
+            font-style: italic;
+            padding: 10px 0;
         }
         .blog-content {
             margin-top: 20px;
@@ -103,20 +130,20 @@
         const postParam = urlParams.get('post');
 
         // Load blog posts from JSON file
-        let blogPosts = [];
+        let blogCategories = {};
         
         async function loadBlogPosts() {
             try {
                 const response = await fetch('blog/posts.json');
                 if (response.ok) {
-                    blogPosts = await response.json();
+                    blogCategories = await response.json();
                 } else {
-                    console.warn('Could not load posts.json, using empty list');
-                    blogPosts = [];
+                    console.warn('Could not load posts.json, using empty object');
+                    blogCategories = {};
                 }
             } catch (error) {
                 console.error('Error loading posts:', error);
-                blogPosts = [];
+                blogCategories = {};
             }
         }
 
@@ -141,23 +168,49 @@
 
         // Function to display blog list
         function displayBlogList() {
-            const listContainer = document.getElementById('blog-list');
-            const postContainer = document.getElementById('blog-post-container');
             const listView = document.getElementById('blog-list-container');
+            const postContainer = document.getElementById('blog-post-container');
 
-            if (blogPosts.length === 0) {
-                listContainer.innerHTML = '<li>No blog posts yet. Add markdown files to the blog/ directory and update the blogPosts array in blog.html</li>';
+            const categoryKeys = Object.keys(blogCategories);
+            
+            if (categoryKeys.length === 0) {
+                listView.innerHTML = '<div>No blog posts yet. Add markdown files to the blog/ directory and update posts.json</div>';
                 return;
             }
 
-            listContainer.innerHTML = blogPosts.map(post => `
-                <li class="blog-list-item">
-                    <a href="?post=${encodeURIComponent(post.filename)}" class="blog-post-link">
-                        ${post.title}
-                    </a>
-                    <div class="blog-post-date">${post.date}</div>
-                </li>
-            `).join('');
+            // Build HTML for each category
+            let categoriesHTML = '';
+            categoryKeys.forEach((categoryName, index) => {
+                const posts = blogCategories[categoryName] || [];
+                
+                let postsHTML = '';
+                if (posts.length === 0) {
+                    postsHTML = '<div class="empty-category">No posts in this category yet.</div>';
+                } else {
+                    postsHTML = '<ul class="blog-list">' + posts.map(post => `
+                        <li class="blog-list-item">
+                            <a href="?post=${encodeURIComponent(post.filename)}" class="blog-post-link">
+                                ${post.title}
+                            </a>
+                            ${post.date ? `<div class="blog-post-date">${post.date}</div>` : ''}
+                        </li>
+                    `).join('') + '</ul>';
+                }
+                
+                // First category is open by default
+                const isOpen = index === 0 ? 'open' : '';
+                
+                categoriesHTML += `
+                    <div class="blog-category">
+                        <details ${isOpen}>
+                            <summary>${categoryName}</summary>
+                            ${postsHTML}
+                        </details>
+                    </div>
+                `;
+            });
+
+            listView.innerHTML = categoriesHTML;
 
             listView.style.display = 'block';
             postContainer.style.display = 'none';

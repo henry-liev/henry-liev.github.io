@@ -148,7 +148,7 @@
                     <a href="?post=${encodeURIComponent(post.filename)}" class="bake-post-link">
                         ${post.title}
                     </a>
-                    <div class="bake-post-date">${post.date}</div>
+                    ${post.date ? `<div class="bake-post-date">${post.date}</div>` : ''}
                 </li>
             `).join('');
 
