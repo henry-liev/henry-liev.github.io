@@ -7,15 +7,15 @@ window.bakePosts = {
     // ],
     "Asian": [
         {
-            "filename": "japanesecheesecake1.md",
-            "title": "Japanese Cheesecake",
-            "date": "15 November 2025"
-        },
-        {
             "filename": "garlicsaltbread1.md",
             "title": "Korean Garlic Salt Bread",
             "date": "8 March 2026"
         },
+        {
+            "filename": "japanesecheesecake1.md",
+            "title": "Japanese Cheesecake",
+            "date": "15 November 2025"
+        }
     ],
     "Cake": [
         {
@@ -41,9 +41,9 @@ window.bakePosts = {
     ],
     "French": [
         {
-            "filename": "creampuffswans1.md",
-            "title": "Cream Puff Swans",
-            "date": "8 December 2025"
+            "filename": "chocolateganachemacarons1.md",
+            "title": "Chocolate Ganache Macarons",
+            "date": "15 March 2026"
         },
         {
             "filename": "croquembouche1.md",
@@ -51,11 +51,12 @@ window.bakePosts = {
             "date": "9 December 2025"
         },
         {
-            "filename": "chocolateganachemacarons1.md",
-            "title": "Chocolate Ganache Macarons",
-            "date": "15 March 2026"
+            "filename": "creampuffswans1.md",
+            "title": "Cream Puff Swans",
+            "date": "8 December 2025"
         },
-    ],"Snacks": [
+    ],
+    "Snacks": [
         {
             "filename": "toffeechocchipcookie1.md",
             "title": "36 Hour Brown Butter Toffee Chocolate Chip Cookies",
