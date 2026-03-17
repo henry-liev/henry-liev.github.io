@@ -12,7 +12,6 @@
 - [Honey Cake](https://www.thenewworld.co.uk/edoardo-pellicano-honey-cake/)
 - [Lemon Cheesecake](https://sugarspunrun.com/lemon-cheesecake/)
 - [Mango Cream Chiffon Cake](https://bakewithzoha.com/mango-cream-chiffon-cake/) with [Mango Mirror Glaze](https://whateveritbakes.com/tag/mango-mirror-glaze/) and [Mango Rose](https://youtu.be/rf4psgQxB28?si=N_9JdBT4EDxdqoI2)
-- [Oreo Cheesecake](https://sugarspunrun.com/oreo-cheesecake/)
 - [Pineapple Upside-Down Cake](https://sugarspunrun.com/pineapple-upside-down-cake/)
 - [Swedish Princess Cake](https://ceciliatolone.com/prinsesstarta-swedish-princess-cake/)
 
@@ -28,14 +27,11 @@
 
 ## French
 - [Chaussons aux Pommes](https://www.norbertskitchen.com/chaussons-aux-pommes/)
-- [Chocolate Ganache French Macarons](https://kitchen335co.com/chocolate-ganache-french-macarons/)
-- [Chocolate Mousse Eclairs](https://www.rockrecipes.com/chocolate-mousse-eclairs/)
 - Croissants
 - [Gateau St Honore](https://onlycrumbsremain.com/gateau-st-honore/)
 - [Kouign Amann](https://foodwishes.blogspot.com/2019/03/kouign-amann-yas-queen.html)
 - [Lemon Meringue Eclairs](https://bakefromscratch.com/lemon-meringue-eclairs/)
 - [Mini Apple Tarte Tatin Roses](https://carolinagelen.com/mini-apple-tarte-tatin-roses/)
-- [Pain Suisse au Chocolat](https://www.eatlivetravelwrite.com/2019/09/french-fridays-pain-suisse-au-chocolat/)
 
 ## Other
 - [Brownie Pudding](https://www.foodnetwork.com/recipes/ina-garten/brownie-pudding-recipe-1945347)
@@ -47,4 +43,3 @@
 - [Sesame Scallion Buns](https://cooking.nytimes.com/recipes/1027592-sesame-scallion-buns)
 - [Strawberry Lime Bars](https://www.tasteofhome.com/recipes/strawberry-lime-bars/?customize_changeset_uuid=563e45ad-87ae-4218-bf5e-b9bbecc79ce8)
 - [Salt Bread (Shio pan)](https://erinscozykitchen.com/recipe/salt-bread-shiopan/)
-- [Taiwanese Pineapple Cakes (Feng Li Su)](https://www.siftandsimmer.com/taiwanese-pineapple-cakes-feng-li-su/)
